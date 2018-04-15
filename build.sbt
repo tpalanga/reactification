@@ -49,9 +49,9 @@ lazy val bActorsService = project.
   )
   .dependsOn(zCommon)
 
-lazy val bReactiveService = project.
+lazy val eReactiveService = project.
   settings(
-    name := "bReactiveService",
+    name := "eReactiveService",
     commonSettings,
     libraryDependencies ++= commonDependencies ++ testingDependencies
   )
