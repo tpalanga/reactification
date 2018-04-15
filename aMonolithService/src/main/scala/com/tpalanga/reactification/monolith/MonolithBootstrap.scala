@@ -13,7 +13,7 @@ object MonolithBootstrap extends App with LazyLogging {
 
   val monolithService = new MonolithService
 
-  Http().bindAndHandle(new MonolithRoute(monolithService).route, "0.0.0.0", 8080).map { httpServerBinding =>
-    logger.info(s"Running at http://localhost:8080/")
+  Http().bindAndHandle(new MonolithRoute(monolithService).route, "0.0.0.0", 8081).map { httpServerBinding =>
+    logger.info(s"Running at http://localhost:8081/")
   }
 }

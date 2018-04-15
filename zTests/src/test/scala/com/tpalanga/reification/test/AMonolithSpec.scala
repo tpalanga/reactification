@@ -7,7 +7,7 @@ import org.scalatest.{AsyncFlatSpec, EitherValues, Matchers}
 
 object AMonolithSpec {
   val eventId = "event1234"
-  val baseUrl = s"http://localhost:8080/events/tickets/$eventId"
+  val baseUrl = s"http://localhost:8081/events/tickets/$eventId"
 
   case class TicketStock(value: Int)
 
