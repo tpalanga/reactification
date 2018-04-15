@@ -6,25 +6,10 @@ import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.Future
 
-object MonolithService {
-  case class TicketType(id: Int)
-  case class TicketStock(value: Int)
-  case class TicketId(serialNo: String)
-  case class DocumentId(filePath: String)
-  case class LeaseId(value: String)
-
-  case class TicketAvailabilities(stock: Map[TicketType, TicketStock])
-
-  sealed trait LeaseConfirmation
-  case class Accepted(leaseId: LeaseId) extends LeaseConfirmation
-  case class Denied(msg: String) extends LeaseConfirmation
-
-  case class UserDetails(email: String, name: String, phone: String)
-
-}
 
 class MonolithService extends LazyLogging {
-  import MonolithService._
+
+  import com.tpalanga.reification.common.Protocol._
 
   def getAvailableTickets(eventId: String): Future[TicketAvailabilities] = {
     logger.info("getAvailableTickets")

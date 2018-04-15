@@ -39,6 +39,15 @@ lazy val aMonolithService = project.
     commonSettings,
     libraryDependencies ++= commonDependencies ++ testingDependencies
   )
+  .dependsOn(zCommon)
+
+lazy val bActorsService = project.
+  settings(
+    name := "bActorsService",
+    commonSettings,
+    libraryDependencies ++= commonDependencies ++ testingDependencies
+  )
+  .dependsOn(zCommon)
 
 lazy val bReactiveService = project.
   settings(
@@ -46,7 +55,14 @@ lazy val bReactiveService = project.
     commonSettings,
     libraryDependencies ++= commonDependencies ++ testingDependencies
   )
+  .dependsOn(zCommon)
 
+lazy val zCommon = project.
+  settings(
+    name := "zCommon",
+    commonSettings,
+    libraryDependencies ++=  commonDependencies ++ testingDependencies
+  )
 lazy val zTests = project.
   settings(
     name := "zTests",
