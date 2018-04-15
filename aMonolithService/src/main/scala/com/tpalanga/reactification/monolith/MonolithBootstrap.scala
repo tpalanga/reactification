@@ -1,4 +1,4 @@
-package com.tpalanga.reactification.a_monolith
+package com.tpalanga.reactification.monolith
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http

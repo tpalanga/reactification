@@ -1,4 +1,4 @@
-package com.tpalanga.reactification.a_monolith
+package com.tpalanga.reactification.monolith
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model.StatusCodes
