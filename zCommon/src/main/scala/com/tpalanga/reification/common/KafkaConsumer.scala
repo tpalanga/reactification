@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.{ByteArrayDeserializer, StringDeser
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class KafkaConsumer(handler: String => Any)
+class KafkaConsumer(handler: String => Future[Any])
                    (implicit system: ActorSystem, materializer: ActorMaterializer, ec: ExecutionContext) extends LazyLogging {
   val consumerSettings = ConsumerSettings(system, new ByteArrayDeserializer, new StringDeserializer)
     .withBootstrapServers("localhost:9092")
@@ -22,8 +22,8 @@ class KafkaConsumer(handler: String => Any)
     .mapAsync(1) { msg =>
       Future {
         logger.info(s"=== Received: ${msg.record.value}")
-        handler(msg.record.value)
-      }.map(_ => msg)
+      }.flatMap(_ => handler(msg.record.value))
+        .map(_ => msg)
     }
     .mapAsync(1) { msg =>
       msg.committableOffset.commitScaladsl()

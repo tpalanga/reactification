@@ -43,7 +43,7 @@ class MonolithService extends LazyLogging {
   }
 
   def createPrintTicket(tickets: Seq[TicketId], userDetails: UserDetails, transactionKey: String): Future[DocumentId] = {
-    logger.info(s"saveTicketData - $tickets, $userDetails, $transactionKey")
+    logger.info(s"createPrintTicket - $tickets, $userDetails, $transactionKey")
     Future.successful(DocumentId("tickets/000578.pdf"))
   }
 }

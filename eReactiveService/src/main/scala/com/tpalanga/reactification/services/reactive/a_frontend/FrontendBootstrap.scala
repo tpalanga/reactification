@@ -3,7 +3,7 @@ package com.tpalanga.reactification.services.reactive.a_frontend
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
-import com.tpalanga.reification.common.{KafkaCommon, KafkaProducer}
+import com.tpalanga.reification.common.KafkaProducer
 import com.typesafe.scalalogging.LazyLogging
 
 object FrontendBootstrap extends App with LazyLogging {

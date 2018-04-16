@@ -39,6 +39,7 @@ object Protocol {
         case x => throw new Exception(s"Could not parse TicketType from $x")
       }
     }
+    implicit val documentIdFormat: RootJsonFormat[DocumentId] = jsonFormat1(DocumentId)
     implicit val ticketIdFormat: RootJsonFormat[TicketId] = jsonFormat1(TicketId)
     implicit val ticketStockFormat: RootJsonFormat[TicketStock] = jsonFormat1(TicketStock)
     implicit val ticketAvailabilitiesFormat: RootJsonFormat[TicketAvailabilities] = jsonFormat1(TicketAvailabilities)
