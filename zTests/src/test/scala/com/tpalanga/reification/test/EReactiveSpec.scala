@@ -8,22 +8,12 @@ import org.scalatest.{AsyncFlatSpec, EitherValues, Matchers}
 object EReactiveSpec {
   val eventId = "event1234"
   val baseUrl = s"http://localhost:8085/events/tickets/$eventId"
-
-  case class TicketStock(value: Int)
-
-  case class TicketAvailabilities(stock: Map[String, TicketStock])
-
-  case class TicketRequest(ticketType: Int, quantity: Int)
-  case class LeaseResponse(leaseId: String)
-
-  case class PaymentConfirmation(transactionKey: String, leaseId: String)
-  case class DownloadResponse(downloadLink: String)
-
 }
 
 class EReactiveSpec extends AsyncFlatSpec with Matchers with EitherValues {
 
   import EReactiveSpec._
+  import ZApiProtocol._
 
   implicit val backend = AkkaHttpBackend()
 

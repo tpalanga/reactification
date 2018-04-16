@@ -8,22 +8,12 @@ import org.scalatest.{AsyncFlatSpec, EitherValues, Matchers}
 object AMonolithSpec {
   val eventId = "event1234"
   val baseUrl = s"http://localhost:8081/events/tickets/$eventId"
-
-  case class TicketStock(value: Int)
-
-  case class TicketAvailabilities(stock: Map[String, TicketStock])
-
-  case class TicketRequest(ticketType: Int, quantity: Int)
-  case class LeaseResponse(leaseId: String)
-
-  case class PaymentConfirmation(transactionKey: String, leaseId: String)
-  case class DownloadResponse(downloadLink: String)
-
 }
 
 class AMonolithSpec extends AsyncFlatSpec with Matchers with EitherValues {
 
   import AMonolithSpec._
+  import ZApiProtocol._
 
   implicit val backend = AkkaHttpBackend()
 
