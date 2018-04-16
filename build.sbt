@@ -23,6 +23,8 @@ val commonDependencies = Seq(
   "com.softwaremill.sttp" %% "akka-http-backend" % "1.1.12",
   "com.softwaremill.sttp" %% "json4s" % "1.1.12",
   "io.spray" %%  "spray-json" % "1.3.4",
+  "org.typelevel" %% "cats-core" % "1.1.0",
+  "org.typelevel" %% "cats-free" % "1.1.0",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 )
@@ -44,6 +46,22 @@ lazy val aMonolithService = project.
 lazy val bActorsService = project.
   settings(
     name := "bActorsService",
+    commonSettings,
+    libraryDependencies ++= commonDependencies ++ testingDependencies
+  )
+  .dependsOn(zCommon)
+
+lazy val cFreeService = project.
+  settings(
+    name := "cFreeService",
+    commonSettings,
+    libraryDependencies ++= commonDependencies ++ testingDependencies
+  )
+  .dependsOn(zCommon)
+
+lazy val dRestService = project.
+  settings(
+    name := "dRestService",
     commonSettings,
     libraryDependencies ++= commonDependencies ++ testingDependencies
   )
